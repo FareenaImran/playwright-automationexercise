@@ -1,12 +1,7 @@
 from api.end_points.account_api import AccountAPI
 from tests.fixtures.api_fixtures import create_account
 
-<<<<<<< Updated upstream
-def test_create_user_account(create_account):
-=======
-
 def test_create_user_account(api_request_context,create_account):
->>>>>>> Stashed changes
     """
     POST TEST
     Create new user account
