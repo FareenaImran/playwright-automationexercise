@@ -36,11 +36,10 @@ def test_put_account_details(api_request_context,create_account,get_account_deta
     updated_payload=user_data.copy()
     updated_payload["name"],updated_payload["city"],updated_payload["country"]="Fareena","Karachi","Pakistan"
 
-    response=account_api.update_account_details(updated_payload)
-    assert response.status==200, f"Failed to update user details,Expected 200 but got {response.status}"
+    json_response=account_api.update_account_details(updated_payload)
 
-    assert "updated" in response.json()["message"],"Unable to update user details"
-    print(f'\n{response.json()["message"]}')
+    assert "updated" in json_response["message"],"Unable to update user details"
+    print(f'\n{json_response["message"]}')
 
     details=get_account_details(email)
     print(f'\n{details}')
@@ -59,10 +58,9 @@ def test_delete_user_account(api_request_context,create_account):
     #delete user account
     api_account=AccountAPI(api_request_context)
     response=api_account.delete_user_account(email,password)
-    assert response.status==200, "Unable to delete user account"
 
     #Verify response message
-    message=response.json()["message"]
+    message=response["message"]
     assert "deleted" in message , f"Expected account deleted but got {message}"
     print(message)
 
