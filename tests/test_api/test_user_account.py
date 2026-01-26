@@ -1,3 +1,4 @@
+#account
 from api.end_points.account_api import AccountAPI
 from tests.fixtures.api_fixtures import create_account
 from tests.fixtures.api_fixtures import get_account_details
