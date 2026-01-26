@@ -45,8 +45,10 @@ class AccountAPI(BaseAPI):
     
     def update_account_details(self,update_data):
         response=self.put(self.UPDATE_ACCOUNT_URL,update_data)
-        return response
+        assert response.status == 200, f"Failed to update user details,Expected 200 but got {response.status}"
+        return response.json()
 
     def delete_user_account(self,email,password):
         response=self.delete(self.DELETE_ACCOUNT_URL,{"email":email,"password":password})
-        return response
+        assert response.status == 200, "Unable to delete user account"
+        return response.json()
