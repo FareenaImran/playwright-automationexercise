@@ -1,0 +1,2 @@
+[32mINFO    [0m test_user_account:test_user_account.py:116 
+Bad request, email or password parameter is missing in POST request.

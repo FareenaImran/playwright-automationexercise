@@ -1,14 +1,23 @@
+import logging
+
+import pytest
+
 from api.end_points.account_api import AccountAPI
 from tests.fixtures.api_fixtures.account_fixtures import create_account,get_account_details
+from utils.log_util import Logger
 
+log=Logger(__name__,logging.INFO)
+
+@pytest.mark.account_api
 def test_create_user_account(api_request_context,create_account):
     """
     POST TEST
     Create new user account
     """
     user_data=create_account
-    print(f"\nPOST: Account created with '{user_data['email']}'")
+    log.logger.info(f"\nPOST: Account created with '{user_data['email']}'")
 
+@pytest.mark.account_api
 def test_get_user_account_details(api_request_context,get_account_details):
     """
     GET Test
@@ -18,8 +27,9 @@ def test_get_user_account_details(api_request_context,get_account_details):
     details=get_account_details(email)
 
     # Verify user details by emai
-    print(f"\nUser Details: \n\n {details}")
+    log.logger.info(f"\nUser Details: \n\n {details}")
 
+@pytest.mark.account_api
 def test_put_account_details(api_request_context,create_account,get_account_details):
     """
     TEST PUT
@@ -27,7 +37,7 @@ def test_put_account_details(api_request_context,create_account,get_account_deta
     """
     user_data=create_account
     email=user_data["email"]
-    print(f"\nCreated Account with {email}")
+    log.logger.info(f"\nCreated Account with {email}")
 
     #Update user info
     account_api=AccountAPI(api_request_context)
@@ -37,11 +47,12 @@ def test_put_account_details(api_request_context,create_account,get_account_deta
     json_response=account_api.update_account_details(updated_payload)
 
     assert "updated" in json_response["message"],"Unable to update user details"
-    print(f'\n{json_response["message"]}')
+    log.logger.info(f'\n{json_response["message"]}')
 
     details=get_account_details(email)
-    print(f'\n{details}')
+    log.logger.info(f'\n{details}')
 
+@pytest.mark.account_api
 def test_delete_user_account(api_request_context,create_account):
     """
     Test 'Delete'
@@ -51,7 +62,7 @@ def test_delete_user_account(api_request_context,create_account):
     user_data = create_account
     email = user_data["email"]
     password=user_data["password"]
-    print(f"\nCreated Account with {email}")
+    log.logger.info(f"\nCreated Account with {email}")
 
     #delete user account
     api_account=AccountAPI(api_request_context)
@@ -60,9 +71,14 @@ def test_delete_user_account(api_request_context,create_account):
     #Verify response message
     message=response["message"]
     assert "deleted" in message , f"Expected account deleted but got {message}"
-    print(message)
+    log.logger.info(message)
 
+@pytest.mark.account_api
 def test_post_to_verify_login_with_valid_details(api_request_context,create_account):
+    """
+    Test 'POST'
+    Test post to verify logging with email and password
+    """
     #Create Account
     user_data = create_account
     email,password=user_data["email"],user_data["password"]
@@ -76,9 +92,14 @@ def test_post_to_verify_login_with_valid_details(api_request_context,create_acco
     assert "User exists" in response["message"],f"{response['message']}"
 
     #Output
-    print(f"\n{response['message']}")
+    log.logger.info(f"\n{response['message']}")
 
+@pytest.mark.account_api
 def test_post_to_verify_login_without_email_parameter(api_request_context, create_account):
+    """
+    Test 'POST'
+    Test post to verify logging without email
+    """
     # Create Account
     user_data = create_account
     password = user_data["password"]
@@ -92,5 +113,5 @@ def test_post_to_verify_login_without_email_parameter(api_request_context, creat
     assert "missing" in response["message"], f"{response['message']}"
 
     # Output
-    print(f"\n{response['message']}")
+    log.logger.info(f"\n{response['message']}")
 

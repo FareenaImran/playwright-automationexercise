@@ -1,0 +1,2 @@
+[32mINFO    [0m test_user_account:test_user_account.py:18 
+POST: Account created with 'john.smith1769600211@example.com'

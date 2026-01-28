@@ -1,15 +1,24 @@
+import logging
+
 import pytest
 from api.end_points.product_api import ProductAPI
 from tests.fixtures.api_fixtures.product_fixtures import get_product_list
+from utils.log_util import Logger
+
+log=Logger(__name__,logging.INFO)
 
 @pytest.mark.product_api
 def test_get_all_product_list(api_request_context,get_product_list):
+    """
+    Test GET: Get all products info
+    """
     json_response = get_product_list
     assert "products" in json_response,"Expected product list"
-    print(f"\n{json_response}")
+    log.logger.info(f"\n{json_response}")
 
 @pytest.mark.product_api
 def test_product_info(api_request_context,get_product_list):
+    """Test all Products Info"""
     json_response = get_product_list
     #Get Products info list
     products=json_response["products"]
@@ -21,34 +30,47 @@ def test_product_info(api_request_context,get_product_list):
         assert product["brand"],f"Product Name: '{product['name']}'> 'brand info' is missing"
         assert product["category"],f"Product Name: '{product['name']}'> 'category info' is missing"
 
+    log.logger.info("\nVerified !! All products have (id, name, price,brand and category) info")
+
 @pytest.mark.product_api
 def test_post_to_all_products_list(api_request_context):
+    """
+    Test Post
+    Add product in product list
+    """
     product_api=ProductAPI(api_request_context)
     response=product_api.add_product()
     #Verify Response Code
     assert response["responseCode"]==405,f"Expected 405 but got {response['responseCode']}"
     #Verify Response Message
     assert "not supported" in response["message"],f"Expected Msg: 'This request method is not supported' but got {response['message']}"
-    print(f"\nMessage: {response}")
+    log.logger.info(f"\nMessage: {response}")
 
+@pytest.mark.product_api
 def test_get_all_brand_list(api_request_context):
+    """
+    Test Get : Get all brand list
+    """
     brand=ProductAPI(api_request_context)
     response=brand.get_all_brand_list()
     #Verify Response Code
     assert response["responseCode"]==200,f"Expected 200 but got {response['responseCode']}"
     #Band List Output
     brand_list=[print(f"\n{brand_info}") for brand_info in response['brands']]
-    print(f"\nTotal Brands:{len(brand_list)}")
+    log.logger.info(f"\nTotal Brands:{len(brand_list)}")
 
+@pytest.mark.product_api
 def test_post_to_all_brands_list(api_request_context):
+    """Test Post: Add brand in brand list"""
     brand = ProductAPI(api_request_context)
     response = brand.add_brand()
     # Verify Response Code
     assert response["responseCode"] == 405, f"Expected 405 but got {response['responseCode']}"
     # Verify Response Message
     assert "not supported" in response["message"], f"Expected Msg: 'This request method is not supported' but got {response['message']}"
-    print(f"\nMessage: {response}")
+    log.logger.info(f"\nMessage: {response}")
 
+@pytest.mark.product_api
 def test_post_to_search_product_without_parameter(api_request_context):
     """
     Test : Post To Search Product Without
@@ -59,8 +81,9 @@ def test_post_to_search_product_without_parameter(api_request_context):
     #Verify Response Code
     assert response["responseCode"]==400,f"Expected 400 but got {response['responseCode']}"
     #Result
-    print(f"\n{response}")
+    log.logger.info(f"\n{response}")
 
+@pytest.mark.product_api
 def test_post_to_search_product(api_request_context):
     """
     Test : Post To Search Product With 
@@ -72,7 +95,7 @@ def test_post_to_search_product(api_request_context):
     assert response["responseCode"]==200,f"Expected 200 but got {response['responseCode']}"
     #Output Searched Products List
     searched_list=[print(f"\n{search_item}") for search_item in response["products"]]
-    print(f"\n\nTotal Searched Products: {len(searched_list)}")
+    log.logger.info(f"\n\nTotal Searched Products: {len(searched_list)}")
 
 
 

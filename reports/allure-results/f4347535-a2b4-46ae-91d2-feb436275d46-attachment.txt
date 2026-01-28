@@ -1,0 +1,2 @@
+[32mINFO    [0m test_product_list:test_product_list.py:84 
+{'responseCode': 400, 'message': 'Bad request, search_product parameter is missing in POST request.'}
