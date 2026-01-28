@@ -1,0 +1,16 @@
+{
+   "PRODUCT_INFO":
+   {
+   "id": 100,
+   "name": "Test Product",
+   "price": "Rs. 100",
+   "brand": "Test Brand",
+   "category": {"usertype": {"usertype": "Test User Type"}, "category": "Test Category"}
+   },
+
+  "BRAND_INFO":
+  {
+     "id": 101,
+     "brand": "Test Brand"
+  }
+}

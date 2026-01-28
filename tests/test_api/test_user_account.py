@@ -1,8 +1,5 @@
-#account
 from api.end_points.account_api import AccountAPI
-from tests.fixtures.api_fixtures import create_account
-from tests.fixtures.api_fixtures import get_account_details
-
+from tests.fixtures.api_fixtures.account_fixtures import create_account,get_account_details
 
 def test_create_user_account(api_request_context,create_account):
     """
@@ -64,4 +61,36 @@ def test_delete_user_account(api_request_context,create_account):
     message=response["message"]
     assert "deleted" in message , f"Expected account deleted but got {message}"
     print(message)
+
+def test_post_to_verify_login_with_valid_details(api_request_context,create_account):
+    #Create Account
+    user_data = create_account
+    email,password=user_data["email"],user_data["password"]
+
+    #Verify User
+    account_api=AccountAPI(api_request_context)
+    response=account_api.verify_user(email,password)
+
+    #Verify Response Code and Msg
+    assert response["responseCode"]==200,f"Expected 200 but got {response['responseCode']}"
+    assert "User exists" in response["message"],f"{response['message']}"
+
+    #Output
+    print(f"\n{response['message']}")
+
+def test_post_to_verify_login_without_email_parameter(api_request_context, create_account):
+    # Create Account
+    user_data = create_account
+    password = user_data["password"]
+
+    # Verify User
+    account_api = AccountAPI(api_request_context)
+    response = account_api.verify_user(None,password)
+
+    # Verify Response Code and Msg
+    assert response["responseCode"] == 400, f"Expected 400 but got {response['responseCode']}"
+    assert "missing" in response["message"], f"{response['message']}"
+
+    # Output
+    print(f"\n{response['message']}")
 

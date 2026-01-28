@@ -1,8 +1,10 @@
 import pytest
-
 from api.end_points.account_api import AccountAPI
+from api.end_points.product_api import ProductAPI
 
-@pytest.fixture(scope="session")
+
+#------------------------------------Account's API Fixtures------------------------------------------
+@pytest.fixture(scope="function")
 def create_account(api_request_context):
     account_api=AccountAPI(api_request_context)
     response=account_api.create_account()
@@ -12,9 +14,8 @@ def create_account(api_request_context):
     payload = account_api.get_payload()
     yield payload
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def get_account_details(api_request_context):
-
     def _get_email(email):
         account_api = AccountAPI(api_request_context)
         response = account_api.get_user_detail_by("email", email)
@@ -24,6 +25,7 @@ def get_account_details(api_request_context):
         details = response.json()["user"]
         assert details["email"] == email, "Email Mismatch!!"
         return details
-
     yield _get_email
+
+#------------------------------------Product's API Fixtures------------------------------------------
 

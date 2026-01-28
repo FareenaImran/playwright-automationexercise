@@ -12,6 +12,7 @@ class AccountAPI(BaseAPI):
     ACCOUNT_DETAILS_URL="api/getUserDetailByEmail"
     UPDATE_ACCOUNT_URL="api/updateAccount"
     DELETE_ACCOUNT_URL="api/deleteAccount"
+    VERIFY_LOGIN_URL="api/verifyLogin"
 
     JSON_PATH=Path(__file__).resolve().parent.parent/"payload"/"create_user.json"
 
@@ -52,3 +53,14 @@ class AccountAPI(BaseAPI):
         response=self.delete(self.DELETE_ACCOUNT_URL,{"email":email,"password":password})
         assert response.status == 200, "Unable to delete user account"
         return response.json()
+
+    def verify_user(self,email=None,password=None):
+        """Verify User Exists or Not"""
+        print(f"\nVerifying User... \nEmail: {email}\nPassword: ***** ")
+        if email and password:
+            response=self.post(self.VERIFY_LOGIN_URL,{"email":email,"password":password})
+        else:
+            response = self.post(self.VERIFY_LOGIN_URL, {})
+        return response.json()
+
+
