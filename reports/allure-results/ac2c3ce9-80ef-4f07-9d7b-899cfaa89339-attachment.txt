@@ -1,4 +1,0 @@
-[32mINFO    [0m test_user_account:test_user_account.py:30 
-User Details: 
-
- {'id': 1316791, 'name': 'John Smith', 'email': 'john.smith1769075170@example.com', 'title': 'Mr', 'birth_day': '15', 'birth_month': '08', 'birth_year': '1990', 'first_name': 'John', 'last_name': 'Smith', 'company': 'Tech Solutions Inc', 'address1': '123 Main Street', 'address2': 'Suite 400', 'country': 'United States', 'state': 'New York', 'city': 'New York City', 'zipcode': '10001'}

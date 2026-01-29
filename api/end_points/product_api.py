@@ -1,6 +1,4 @@
 import os.path
-from re import search
-
 from api.base.ae_base_api import AEBaseApi
 from utils.read_json import load_json
 

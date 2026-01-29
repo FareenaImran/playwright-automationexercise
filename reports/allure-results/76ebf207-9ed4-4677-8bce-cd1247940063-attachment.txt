@@ -1,3 +1,0 @@
-[32mINFO    [0m test_user_account:test_user_account.py:65 
-Created Account with john.smith1769600214@example.com
-[32mINFO    [0m test_user_account:test_user_account.py:74 Account deleted!

@@ -1,0 +1,29 @@
+{
+  "Signup_Data": {
+
+    "signup_info":{
+        "username":"Fareena",
+        "email":"fyctest5401+ae@gmail.com"},
+
+    "account_info":{
+        "gender":"Mrs",
+        "password":"123",
+        "birth_day": "25",
+        "birth_month": "December",
+        "birth_year":"2007"},
+
+    "address_info": {
+          "first_name": "Fareena",
+          "last_name": "Imran",
+          "address": "ABC Street",
+          "state": "Sindh",
+          "city": "Karachi",
+          "zip_code": "8920",
+          "mobile_num": "03309876554"
+        }
+
+  },
+  "Login_Data": {
+
+  }
+}

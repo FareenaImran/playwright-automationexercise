@@ -1,2 +1,0 @@
-[32mINFO    [0m test_product_list:test_product_list.py:47 
-Message: {'responseCode': 405, 'message': 'This request method is not supported.'}

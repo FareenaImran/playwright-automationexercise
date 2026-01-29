@@ -1,5 +1,14 @@
+import os
+from pathlib import Path
+
 import pytest
+from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
+
+load_dotenv()
+
+file_path=Path(__file__).resolve().parent
+from utils.config_reader import read_config
 
 
 #------------------------------------API's Fixtures----------------------------------------
@@ -13,6 +22,12 @@ def api_request_context():
 
 
 #------------------------------------UI's Fixtures----------------------------------------
+
+@pytest.fixture(autouse=True)
+def setup_module(page):
+    page.wait_for_load_state("networkidle")
+    page.goto(read_config(os.getenv("ENV"), "base_url"), timeout=150000)
+
 
 @pytest.fixture(params=["chrome"],scope="function")
 def browser(request):
@@ -29,7 +44,7 @@ def browser(request):
 
 @pytest.fixture(scope="function")
 def page(browser):
-    context=browser.new_context()
+    context=browser.new_context(no_viewport=True)
     page=context.new_page()
     yield page
     page.wait_for_timeout(2000)

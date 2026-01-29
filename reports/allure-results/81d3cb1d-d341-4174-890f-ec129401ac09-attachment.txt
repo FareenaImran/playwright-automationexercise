@@ -1,3 +1,0 @@
-[32mINFO    [0m test_product_list:test_product_list.py:98 
-
-Total Searched Products: 14

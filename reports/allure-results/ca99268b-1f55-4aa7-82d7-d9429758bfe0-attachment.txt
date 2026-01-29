@@ -1,0 +1,23 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Signup/Login
+[32mINFO    [0m pages.base.base_page:base_page.py:54 New User Signup! is visible
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering Name : Fareena
+[32mINFO    [0m pages.base.base_page:base_page.py:45 Entering Email : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Signup
+[32mINFO    [0m pages.base.base_page:base_page.py:54 Enter Account Information is visible
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Mrs
+[32mINFO    [0m pages.base.base_page:base_page.py:45 Entering Password : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:59 Selecting Day :25
+[32mINFO    [0m pages.base.base_page:base_page.py:59 Selecting Month :December
+[32mINFO    [0m pages.base.base_page:base_page.py:59 Selecting Year :2007
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering First Name : Fareena
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering Last Name : Imran
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering Address : ABC Street
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering State : Sindh
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering City : Karachi
+[32mINFO    [0m pages.base.base_page:base_page.py:47 Entering Zip Code : 8920
+[32mINFO    [0m pages.base.base_page:base_page.py:45 Entering Mobile Num : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Create Account
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Continue
+[32mINFO    [0m pages.home.home_page:home_page.py:40 Signup Successfully!! Got Message:  Logged in as Fareena
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Delete Account
+[32mINFO    [0m test_registration:test_registration.py:33 Account Deleted Successfully!! Got Message: ACCOUNT DELETED!
