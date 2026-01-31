@@ -1,5 +1,4 @@
 import pytest
-
 from api.end_points.product_api import ProductAPI
 
 @pytest.fixture(scope="function")

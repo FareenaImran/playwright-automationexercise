@@ -27,7 +27,7 @@ class AccountInfoPage(SignupBase):
 
     def __init__(self,page):
         super().__init__(page)
-        self.account_info_text=self.page.get_by_role("heading",name=self.ACCOUNT_INFO)
+        # self.account_info_text=self.page.get_by_role("heading",name=self.ACCOUNT_INFO)
         self.password_input=self.page.locator(self.PASSWORD_INPUT)
         self.first_name_input=self.page.locator(self.FIRST_NAME_INPUT)
         self.last_name_input=self.page.locator(self.LAST_NAME_INPUT)
@@ -37,22 +37,36 @@ class AccountInfoPage(SignupBase):
         self.zip_code_input=self.page.locator(self.ZIP_CODE_INPUT)
         self.mobile_num_input=self.page.locator(self.MOBILE_NUM_INPUT)
 
+        # _________Credentials__________
+        self._password=None
 
     # ___________________________________Methods____________________________________________
 
 
-
-    def verify_account_info_text(self):
-        self.is_visible("Enter Account Information",self.account_info_text)
+    def select_gender(self, gender):
+        self.click(gender, self.RADIO_FEMALE if gender == "Mrs" else self.RADIO_MALE)
         return self
+
+    def select_dob(self, day, month, year):
+        self.select_dropdown("Day", self.DAY, day)
+        self.select_dropdown("Month", self.MONTH, month)
+        self.select_dropdown("Year", self.YEAR, year)
+        return self
+
+    def get_password(self):
+        return self._password
 
     def enter_account_info(self):
         #Get Account Info from 'auth_data.json'
         account_info=self.get_account_data()
-
-        assert self.verify_account_info_text(),f"Unable to navigate to {self.ACCOUNT_INFO} page"
+        #Verify Page Name
+        self.verify_page_heading(self.ACCOUNT_INFO)
+        #Gender
         self.select_gender(account_info["gender"])
+        #Password
+        self._password=account_info["password"]
         self.type("Password",self.password_input,account_info["password"],True)
+        #Date of birth
         self.select_dob(account_info["birth_day"],account_info["birth_month"],account_info["birth_year"])
         return self
 
@@ -69,15 +83,6 @@ class AccountInfoPage(SignupBase):
         self.click("Create Account",self.CREATE_ACCOUNT_BTN)
         return AccountCreatedPage(self.page)
 
-    def select_gender(self,gender):
-        self.click(gender,self.RADIO_FEMALE if gender=="Mrs" else self.RADIO_MALE)
-        return self
-
-    def select_dob(self,day,month,year):
-        self.select_dropdown("Day",self.DAY,day)
-        self.select_dropdown("Month",self.MONTH,month)
-        self.select_dropdown("Year",self.YEAR,year)
-        return self
 
 
 

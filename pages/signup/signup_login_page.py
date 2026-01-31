@@ -6,7 +6,8 @@ class SignupLoginPage(SignupBase):
 
     # ___________________________________Locators____________________________________________
 
-    NEW_SIGNUP="New User Signup!"
+    NEW_SIGNUP_TEXT="New User Signup!"
+    LOGIN_TO_ACCOUNT_TEXT="Login to your account"
     SIGNUP_EMAIL_INPUT="[data-qa='signup-email']"
     NAME_INPUT="Name"
     SIGNUP_BTN="Signup"
@@ -14,7 +15,6 @@ class SignupLoginPage(SignupBase):
 
     def __init__(self,page):
         super().__init__(page)
-        self.new_user_signup=self.page.get_by_role("heading",name=self.NEW_SIGNUP)
         self.name_input=self.page.get_by_placeholder(self.NAME_INPUT)
         self.email_input=self.page.locator(self.SIGNUP_EMAIL_INPUT)
         self._email=None
@@ -23,14 +23,13 @@ class SignupLoginPage(SignupBase):
     # ___________________________________Methods____________________________________________
 
     def login(self):
-        pass
+        self.verify_page_heading(self.LOGIN_TO_ACCOUNT_TEXT)
 
 
     def signup(self):
         #Get Data from 'auth_data.json'
         self._name,self._email=self.get_signup_cred()
-
-        self.is_visible("New User Signup!",self.new_user_signup)
+        self.verify_page_heading(self.NEW_SIGNUP_TEXT)
         self.type("Name",self.name_input,self._name)
         self.type("Email", self.email_input, self._email,mask=True)
         self.click("Signup",self.SIGNUP_BTN)

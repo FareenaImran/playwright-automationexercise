@@ -1,9 +1,7 @@
 import pytest
 from api.end_points.account_api import AccountAPI
-from api.end_points.product_api import ProductAPI
 
 
-#------------------------------------Account's API Fixtures------------------------------------------
 @pytest.fixture(scope="function")
 def create_account(api_request_context):
     account_api=AccountAPI(api_request_context)
@@ -27,5 +25,4 @@ def get_account_details(api_request_context):
         return details
     yield _get_email
 
-#------------------------------------Product's API Fixtures------------------------------------------
 

@@ -60,6 +60,7 @@ class BasePage:
             return self
 
     def get_text(self,locator):
+        locator.wait_for(state="visible")
         return locator.inner_text()
 
     def load_json(self,path):

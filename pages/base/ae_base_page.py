@@ -1,7 +1,10 @@
+import logging
+import allure
 from playwright.sync_api import expect
-
 from pages.base.base_page import BasePage
+from utils.log_util import Logger
 
+log=Logger(__name__,logging.INFO)
 
 class AEBasePage(BasePage):
 
@@ -17,18 +20,23 @@ class AEBasePage(BasePage):
     # ___________________________________Methods____________________________________________
 
     def verify_page(self,option_name,is_selected=None):
-        locator=self.page.get_by_role("link",name=option_name)
-        has_style=locator.get_attribute("style")
-        if is_selected:
-            assert has_style=="color: orange;"
-            return True
-        else:
-            return False
+        with allure.step(f"Selected navbar option : {option_name}"):
+            locator=self.page.get_by_role("link",name=option_name)
+            has_style=locator.get_attribute("style")
+            if is_selected:
+                assert has_style=="color: orange;"
+                log.logger.info(f"Selected navbar option : {option_name}")
+                return True
+            else:
+                return False
 
     def verify_page_heading(self,value):
-        heading=self.page.get_by_role("heading",name=value)
-        expect(heading).to_be_visible()
-        return heading.inner_text()
+        with allure.step(f"On Page: {value}"):
+            heading=self.page.get_by_role("heading",name=value)
+            heading.wait_for(state="visible")
+            assert heading.is_visible(),f"Unable to navigate to {value}"
+            log.logger.info(f"On Page : {value}")
+            return heading.inner_text()
 
     def close_modal_if_present(self):
         """Close modal if present"""

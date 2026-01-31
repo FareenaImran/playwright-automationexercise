@@ -5,6 +5,8 @@ import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 
+from utils.save_navigation import block_ad
+
 load_dotenv()
 
 file_path=Path(__file__).resolve().parent
@@ -46,6 +48,7 @@ def browser(request):
 def page(browser):
     context=browser.new_context(no_viewport=True)
     page=context.new_page()
+    block_ad(page)
     yield page
     page.wait_for_timeout(2000)
     page.close()
