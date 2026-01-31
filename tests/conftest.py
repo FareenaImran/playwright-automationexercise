@@ -47,8 +47,8 @@ def browser(request):
 @pytest.fixture(scope="function")
 def page(browser):
     context=browser.new_context(no_viewport=True)
+    block_ad(context)
     page=context.new_page()
-    block_ad(page)
     yield page
     page.wait_for_timeout(2000)
     page.close()

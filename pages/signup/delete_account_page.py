@@ -10,4 +10,9 @@ class DeleteAccountPage(AEBasePage):
 
     def get_account_deleted_msg(self):
         success_msg=self.verify_page_heading(self.ACCOUNT_DELETE_TEXT)
-        return success_msg
+        return success_msg.lower()
+
+    def delete_account(self):
+        msg=self.get_account_deleted_msg()
+        assert ("deleted" or "DELETED") in msg,f"\nUnexpected Message :{msg}"
+        return self

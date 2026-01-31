@@ -16,15 +16,12 @@ class TestRegistration(BaseTest):
         #Signup
         username,_,_=signup
 
-        # Verify Logged in username
+        #Verify Logged in username
         home=HomePage(page)
         home.verify_logged_in_username(username)
 
-        #Delete Account
-        account_deleted_msg = home.goto_delete_account().get_account_deleted_msg()
-        assert "Account Deleted" in account_deleted_msg,f"\nUnexpected Message :{account_deleted_msg}"
+        log.logger.info("Signup Successfully!")
 
-        log.logger.info(f"Account Deleted Successfully!!")
 
 
 

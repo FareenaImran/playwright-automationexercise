@@ -37,9 +37,6 @@ class AccountInfoPage(SignupBase):
         self.zip_code_input=self.page.locator(self.ZIP_CODE_INPUT)
         self.mobile_num_input=self.page.locator(self.MOBILE_NUM_INPUT)
 
-        # _________Credentials__________
-        self._password=None
-
     # ___________________________________Methods____________________________________________
 
 
@@ -53,9 +50,6 @@ class AccountInfoPage(SignupBase):
         self.select_dropdown("Year", self.YEAR, year)
         return self
 
-    def get_password(self):
-        return self._password
-
     def enter_account_info(self):
         #Get Account Info from 'auth_data.json'
         account_info=self.get_account_data()
@@ -64,7 +58,6 @@ class AccountInfoPage(SignupBase):
         #Gender
         self.select_gender(account_info["gender"])
         #Password
-        self._password=account_info["password"]
         self.type("Password",self.password_input,account_info["password"],True)
         #Date of birth
         self.select_dob(account_info["birth_day"],account_info["birth_month"],account_info["birth_year"])

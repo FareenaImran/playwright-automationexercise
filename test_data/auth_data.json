@@ -23,7 +23,10 @@
         }
 
   },
-  "Login_Data": {
 
+  "Login_Data": {
+    "username": "Fareena",
+    "email":"fyctest5401+ae@gmail.com",
+    "password": "123"
   }
 }

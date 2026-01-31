@@ -1,0 +1,6 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Signup/Login
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:38 On Page : Login to your account
+[32mINFO    [0m pages.base.base_page:base_page.py:45 Entering Email : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:45 Entering Password : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:33 Clicking on Login
+[32mINFO    [0m test_login:test_login.py:36 Validation Error(s): Your email or password is incorrect!

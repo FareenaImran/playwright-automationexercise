@@ -15,6 +15,7 @@ class HomePage(AEBasePage):
     SIGNUP_LOGIN="Signup / Login"
     DELETE_ACCOUNT="Delete Account"
     LOGGED_IN_USERNAME_TEXT="Logged in as"
+    LOGOUT="Logout"
 
     def __init__(self,page):
         super().__init__(page)
@@ -33,12 +34,18 @@ class HomePage(AEBasePage):
         self.click("Signup/Login",self.SIGNUP_LOGIN)
         return SignupLoginPage(self.page)
 
+    def logout(self):
+        self.click("Logout",self.LOGOUT)
+        return SignupLoginPage(self.page)
+
     def verify_logged_in_username(self,username):
         """Verify that username after signup display on home page """
-        logged_in_as_username=self.get_text(self.logged_in_username_text)
-        assert username in logged_in_as_username, f"\nDid not get username '{username}' on home page "
-        log.logger.info(f"Signup Successfully!! Got Message: {logged_in_as_username}")
-        return self
+        try:
+            logged_in_as_username=self.get_text(self.logged_in_username_text)
+            assert username in logged_in_as_username, f"\nDid not get username '{username}' on home page "
+            return logged_in_as_username
+        except Exception as e:
+            raise Exception(f"Failed to login/sign {str(e)}")
 
     def goto_delete_account(self):
         """Delete user account after signup"""
