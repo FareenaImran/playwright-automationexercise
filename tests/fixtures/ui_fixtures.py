@@ -14,7 +14,7 @@ def signup(page):
     username,email=cred.get_signup_data()
     #SignUp
     home = HomePage(page)
-    (home.verify_home_page().go_to_signup_or_login().signup(username,email).
+    (home.verify_home_page().go_to_signup_or_login().verify_signup_page().signup_user(username,email).
      enter_account_info().enter_required_address_info().goto_home_page())
     #Get Password
     password=cred.get_account_data()["password"]

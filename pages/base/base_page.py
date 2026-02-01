@@ -1,5 +1,8 @@
 import json
 import logging
+import os.path
+from pathlib import Path
+
 import allure
 from playwright.sync_api import expect
 
@@ -8,9 +11,12 @@ from utils.log_util import Logger
 log=Logger(__name__,logging.INFO)
 
 class BasePage:
+    BASE_DIR_PATH = file_path = os.path.dirname(os.path.abspath(__file__))
+    IMAGE_PATH=os.path.join(BASE_DIR_PATH,'..',"..","test_data","images")
 
     def __init__(self,page):
         self.page=page
+
 
     #--------------------------Methods------------------------------
 
@@ -62,6 +68,19 @@ class BasePage:
     def get_text(self,locator):
         locator.wait_for(state="visible")
         return locator.inner_text()
+
+    def upload_image(self,field_name,btn_name,file_name):
+        with allure.step(f"Uploading {file_name} ..."):
+            file_path=os.path.join(self.IMAGE_PATH,file_name)
+            with self.page.expect_file_chooser() as fc_info:
+                self.click(field_name,btn_name)
+            file_chooser=fc_info.value
+            file_chooser.set_files(file_path)
+            log.logger.info(f"Uploading {file_name} ... ")
+
+    def accept_alert(self):
+        self.page.once("dialog",lambda dialog:dialog.accept())
+        return self
 
     def load_json(self,path):
         with open(path,"r") as f:

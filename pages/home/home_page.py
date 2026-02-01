@@ -1,5 +1,6 @@
 import logging
 from pages.base.ae_base_page import AEBasePage
+from pages.contact_us.contact_us import ContactUsPage
 from pages.signup.delete_account_page import DeleteAccountPage
 from pages.signup.signup_login_page import SignupLoginPage
 from utils.log_util import Logger
@@ -16,6 +17,7 @@ class HomePage(AEBasePage):
     DELETE_ACCOUNT="Delete Account"
     LOGGED_IN_USERNAME_TEXT="Logged in as"
     LOGOUT="Logout"
+    CONTACT_US="Contact us"
 
     def __init__(self,page):
         super().__init__(page)
@@ -34,7 +36,13 @@ class HomePage(AEBasePage):
         self.click("Signup/Login",self.SIGNUP_LOGIN)
         return SignupLoginPage(self.page)
 
-    def logout(self):
+    def goto_contact_us(self):
+        """Navigate to Contact us page"""
+        self.click("Contact Us",self.CONTACT_US)
+        return ContactUsPage(self.page)
+
+    def logout_user(self):
+        """Navigate to Login Page after logout"""
         self.click("Logout",self.LOGOUT)
         return SignupLoginPage(self.page)
 
@@ -43,7 +51,7 @@ class HomePage(AEBasePage):
         try:
             logged_in_as_username=self.get_text(self.logged_in_username_text)
             assert username in logged_in_as_username, f"\nDid not get username '{username}' on home page "
-            return logged_in_as_username
+            return self
         except Exception as e:
             raise Exception(f"Failed to login/sign {str(e)}")
 
