@@ -1,6 +1,7 @@
 import logging
 from pages.base.ae_base_page import AEBasePage
 from pages.contact_us.contact_us import ContactUsPage
+from pages.products.products_page import ProductsPage
 from pages.signup.delete_account_page import DeleteAccountPage
 from pages.signup.signup_login_page import SignupLoginPage
 from utils.log_util import Logger
@@ -18,6 +19,7 @@ class HomePage(AEBasePage):
     LOGGED_IN_USERNAME_TEXT="Logged in as"
     LOGOUT="Logout"
     CONTACT_US="Contact us"
+    PRODUCTS="Products"
 
     def __init__(self,page):
         super().__init__(page)
@@ -45,6 +47,10 @@ class HomePage(AEBasePage):
         """Navigate to Login Page after logout"""
         self.click("Logout",self.LOGOUT)
         return SignupLoginPage(self.page)
+
+    def goto_products(self):
+        self.click("Products",self.PRODUCTS)
+        return ProductsPage(self.page)
 
     def verify_logged_in_username(self,username):
         """Verify that username after signup display on home page """

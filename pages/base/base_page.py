@@ -35,7 +35,7 @@ class BasePage:
                 try:
                     element.wait_for(state="visible",timeout=2000)
                     element.scroll_into_view_if_needed()
-                    element.click()
+                    element.first.click()
                     log.logger.info("Clicking on " + field_name)
                     return  #exit function
                 except:
@@ -56,6 +56,7 @@ class BasePage:
 
     def is_visible(self,field_name,locator):
         with allure.step(field_name + "is visible"):
+            locator.scroll_into_view_if_needed()
             expect(locator).to_be_visible()
             log.logger.info(field_name+" "+"is visible")
 
@@ -81,6 +82,12 @@ class BasePage:
     def accept_alert(self):
         self.page.once("dialog",lambda dialog:dialog.accept())
         return self
+
+    def verify_url(self,text):
+        with allure.step(f"Verifying {text} in page url"):
+            assert text in self.page.url, f"Didn't get {text} in url"
+            log.logger.info(f"Navigated to :{self.page.url}")
+            return self
 
     def load_json(self,path):
         with open(path,"r") as f:
