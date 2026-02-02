@@ -66,9 +66,11 @@ class BasePage:
             log.logger.info(f"Selecting {field_name} :{option}")
             return self
 
-    def get_text(self,locator):
-        locator.wait_for(state="visible")
-        return locator.inner_text()
+    def get_text(self,locator,is_list=False):
+        if is_list:
+            return locator.all_inner_texts()
+        else:
+            return locator.inner_text()
 
     def upload_image(self,field_name,btn_name,file_name):
         with allure.step(f"Uploading {file_name} ..."):
