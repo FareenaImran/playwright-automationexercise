@@ -1,8 +1,6 @@
 import json
 import logging
 import os.path
-from pathlib import Path
-
 import allure
 from playwright.sync_api import expect
 
@@ -11,8 +9,10 @@ from utils.log_util import Logger
 log=Logger(__name__,logging.INFO)
 
 class BasePage:
+
     BASE_DIR_PATH = file_path = os.path.dirname(os.path.abspath(__file__))
     IMAGE_PATH=os.path.join(BASE_DIR_PATH,'..',"..","test_data","images")
+
 
     def __init__(self,page):
         self.page=page

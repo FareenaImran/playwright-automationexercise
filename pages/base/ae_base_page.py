@@ -11,11 +11,13 @@ class AEBasePage(BasePage):
     # ___________________________________Locators____________________________________________
     CLOSE_ICON = ".close"
     MODAL =".modal-content"
+    SUCCESS_MSG=".alert-success"
+
 
     def __init__(self,page):
         super().__init__(page)
         self.modal=self.page.locator(self.MODAL)
-
+        self.success_msg=self.page.locator(self.SUCCESS_MSG)
 
     # ___________________________________Methods____________________________________________
 
@@ -42,3 +44,12 @@ class AEBasePage(BasePage):
         """Close modal if present"""
         if self.modal.is_visible():
             self.click("Close",self.CLOSE_ICON)
+
+    def get_alert_msg(self):
+        alert = self.get_text(self.success_msg)
+        return alert
+
+    def get_validation_msg(self,field_name,locator):
+        msg=locator.evaluate("element => element.validationMessage")
+        return msg
+

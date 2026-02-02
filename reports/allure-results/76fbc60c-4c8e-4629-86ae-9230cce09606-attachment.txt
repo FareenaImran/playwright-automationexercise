@@ -1,7 +1,0 @@
-[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:28 Selected navbar option : Home
-[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
-[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:38 On Page : All Products
-[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Search Text : blue
-[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Search Icon
-[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:38 On Page : Searched Products
-[32mINFO    [0m test_products:test_products.py:45 Verified !! All the searched product names contain 'blue'

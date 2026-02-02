@@ -1,6 +1,7 @@
 import logging
 from pages.base.ae_base_page import AEBasePage
 from pages.contact_us.contact_us import ContactUsPage
+from pages.home.footer_page import FooterPage
 from pages.products.products_page import ProductsPage
 from pages.signup.delete_account_page import DeleteAccountPage
 from pages.signup.signup_login_page import SignupLoginPage
@@ -20,11 +21,15 @@ class HomePage(AEBasePage):
     LOGOUT="Logout"
     CONTACT_US="Contact us"
     PRODUCTS="Products"
+    SUBSCRIPTION_TEXT="Subscription"
+
 
     def __init__(self,page):
         super().__init__(page)
         self.test_cases=self.page.get_by_role("link",name=self.TESTCASES)
         self.logged_in_username_text=self.page.get_by_text(self.LOGGED_IN_USERNAME_TEXT)
+        self.subscription_text=self.page.get_by_text(self.SUBSCRIPTION_TEXT)
+
 
     # ___________________________________Methods____________________________________________
 
@@ -65,6 +70,11 @@ class HomePage(AEBasePage):
         """Delete user account after signup"""
         self.click("Delete Account", self.DELETE_ACCOUNT)
         return DeleteAccountPage(self.page)
+
+    def goto_footer(self):
+        self.subscription_text.scroll_into_view_if_needed()
+        return FooterPage(self.page)
+
 
 
 
