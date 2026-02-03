@@ -66,11 +66,8 @@ class BasePage:
             log.logger.info(f"Selecting {field_name} :{option}")
             return self
 
-    def get_text(self,locator,is_list=False):
-        if is_list:
-            return locator.all_inner_texts()
-        else:
-            return locator.inner_text()
+    def get_text(self,locator,is_list=None):
+        return locator.all_inner_texts() if is_list else locator.inner_text()
 
     def upload_image(self,field_name,btn_name,file_name):
         with allure.step(f"Uploading {file_name} ..."):
@@ -90,6 +87,12 @@ class BasePage:
             assert text in self.page.url, f"Didn't get {text} in url"
             log.logger.info(f"Navigated to :{self.page.url}")
             return self
+
+    def hover(self,value):
+       element=self.page.locator(value)
+       element.scroll_into_view_if_needed()
+       element.hover()
+       return self
 
     def load_json(self,path):
         with open(path,"r") as f:

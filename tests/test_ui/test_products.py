@@ -36,7 +36,7 @@ class TestProducts(BaseTest):
         #Search Product
         home=HomePage(page)
         searched_product_names=(home.verify_home_page().goto_products().verify_product_page().
-                                 search_product(search_term).verify_searched_product_text().get_product_names())
+                                 search_product(search_term).verify_searched_product_text().get_all_product_names())
 
         #Verify searched term in product names
         success=all(search_term.lower() in name.lower() for name in searched_product_names)

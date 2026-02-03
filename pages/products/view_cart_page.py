@@ -1,0 +1,53 @@
+import logging
+import re
+
+from pages.base.ae_base_page import AEBasePage
+from utils.log_util import Logger
+
+log=Logger(__name__,logging.INFO)
+
+class ViewCartPage(AEBasePage):
+
+    # ___________________________________Locators____________________________________________
+    ROWS="//tbody//tr"
+    PRODUCT_DATA="#product-"
+    CART_DESC=".cart_description"
+    CART_PRICE=".cart_price"
+    CART_QUANTITY=".cart_quantity"
+    CART_TOTAL=".cart_total"
+
+    def __init__(self, page):
+        super().__init__(page)
+        self.rows=self.page.locator(self.ROWS)
+        self.prod_desc=self.page.locator(self.CART_DESC)
+        self.prod_price=self.page.locator(self.CART_PRICE)
+        self.prod_quan=self.page.locator(self.CART_QUANTITY)
+        self.prod_total=self.page.locator(self.CART_TOTAL)
+
+    # ___________________________________Methods____________________________________________
+
+    def get_rows(self):
+        total=self.rows.count()
+        return total
+
+    def get_all_products_desc(self):
+        return self.get_text(self.prod_desc,True)
+
+    def get_all_products_price(self):
+        prices_text= self.get_text(self.prod_price,True)
+        all_prices=[re.search('\d+',price).group() for price in prices_text]
+        return all_prices
+
+    def get_all_products_quantity(self):
+        return self.get_text(self.prod_quan, True)
+
+    def get_all_products_total(self):
+        total_texts=self.get_text(self.prod_total, True)
+        total_list=[re.search('\d+',total).group() for total in total_texts]
+        return total_list
+
+
+
+
+
+

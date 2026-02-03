@@ -1,4 +1,0 @@
-[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:30 Selected navbar option : Home
-[32mINFO    [0m pages.base.base_page:base_page.py:51 Entering Email : *****************
-[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Subscribe Icon
-[32mINFO    [0m test_subscription:test_subscription.py:27 Please include an '@' in the email address. 'None' is missing an '@'.
