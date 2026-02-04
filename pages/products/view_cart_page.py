@@ -1,6 +1,5 @@
 import logging
 import re
-
 from pages.base.ae_base_page import AEBasePage
 from utils.log_util import Logger
 
@@ -35,7 +34,7 @@ class ViewCartPage(AEBasePage):
 
     def get_all_products_price(self):
         prices_text= self.get_text(self.prod_price,True)
-        all_prices=[re.search('\d+',price).group() for price in prices_text]
+        all_prices=[re.search(r'\d+',price).group() for price in prices_text]
         return all_prices
 
     def get_all_products_quantity(self):
@@ -43,7 +42,7 @@ class ViewCartPage(AEBasePage):
 
     def get_all_products_total(self):
         total_texts=self.get_text(self.prod_total, True)
-        total_list=[re.search('\d+',total).group() for total in total_texts]
+        total_list=[re.search(r'\d+',total).group() for total in total_texts]
         return total_list
 
 

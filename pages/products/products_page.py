@@ -1,4 +1,6 @@
 import logging
+import re
+
 import pytest
 from pages.base.ae_base_page import AEBasePage
 from pages.products.product_details_page import ProductDetailsPage
@@ -17,8 +19,6 @@ class ProductsPage(AEBasePage):
     PRODUCT_NAME=".overlay-content p"
     PRODUCT_PRICE=".product-overlay h2"
     ADD_TO_CART_BTN="//a[text()='Add to cart']"
-    CONT_SHOP_BTN="Continue Shopping"
-    VIEW_CART="View Cart"
 
 
 
@@ -69,20 +69,14 @@ class ProductsPage(AEBasePage):
         self.hover(product)
         self.click("Add To Cart", f"({product}{self.ADD_TO_CART_BTN})[{index_no}]")
         return self
-
-    def continue_shopping(self):
-        self.click("Continue Shopping", self.CONT_SHOP_BTN)
-        return self
-
-    def view_cart(self):
-        self.click("View Cart",self.VIEW_CART)
-        return self
-
+    
     def get_product_name(self,index_no):
         product_name=self.product_name.nth(index_no)
         return self.get_text(product_name)
 
     def get_product_price(self,index_no):
         product_price=self.product_price.nth(index_no)
-        return self.get_text(product_price)
+        prices_text=self.get_text(product_price)
+        price_count=re.search(r'\d+',prices_text).group()
+        return price_count
 

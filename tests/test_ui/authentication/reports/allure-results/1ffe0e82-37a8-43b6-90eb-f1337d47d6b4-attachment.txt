@@ -1,0 +1,1 @@
+INFO     pages.base.base_page:base_page.py:39 Clicking on Signup/Login

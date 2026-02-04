@@ -1,5 +1,8 @@
-AD_PATTERNS=["**/*google_vignette*","**/*adservice*"]
-
+AD_PATTERN=[
+    "doubleclick.net",
+    "googlesyndication.com",
+    "googleadservices.com"
+        ]
 def block_ad(context):
-   for pattern in AD_PATTERNS:
-       context.route(pattern,lambda route:route.abort())
+    context.route("**/*", lambda route: route.abort()
+    if any(ad in route.request.url for ad in AD_PATTERN)else route.continue_())

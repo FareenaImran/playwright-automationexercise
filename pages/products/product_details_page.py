@@ -1,11 +1,10 @@
 import logging
-
-from pages.base.ae_base_page import AEBasePage
+from pages.products.product_base_page import ProductBasePage
 from utils.log_util import Logger
 
 log=Logger(__name__,logging.INFO)
 
-class ProductDetailsPage(AEBasePage):
+class ProductDetailsPage(ProductBasePage):
     # ___________________________________Locators____________________________________________
     PRODUCT_DETAIL_URL="product_details"
     PRODUCT_INFO=".product-information"
@@ -15,6 +14,9 @@ class ProductDetailsPage(AEBasePage):
     PRODUCT_AVAILABILITY="p:has-text('Availability')"
     PRODUCT_CONDITION="p:has-text('Condition')"
     PRODUCT_BRAND="p:has-text('Brand')"
+    QUANTITY="#quantity"
+    CONT_SHOP_BTN = "Continue Shopping"
+    VIEW_CART="View Cart"
 
 
     def __init__(self,page):
@@ -26,6 +28,7 @@ class ProductDetailsPage(AEBasePage):
         self.product_availability=self.page.locator(self.PRODUCT_AVAILABILITY)
         self.product_condition=self.page.locator(self.PRODUCT_CONDITION)
         self.product_brand=self.page.locator(self.PRODUCT_BRAND)
+        self.product_quantity=self.page.locator(self.QUANTITY)
 
     # ___________________________________Methods____________________________________________
 
@@ -72,3 +75,18 @@ class ProductDetailsPage(AEBasePage):
         text = self.get_text(self.product_brand)
         self.is_visible(text, self.product_brand)
         return self
+
+    def get_product_quantity(self):
+        quantity=self.product_quantity.input_value()
+        return quantity
+
+    def increase_or_decrease_quan(self,action,times):
+        """add or decrease quantity"""
+        for i in range(times):
+            self.product_quantity.press("ArrowUp")\
+            if "add" in action.lower().strip() \
+            else self.product_quantity.press("ArrowDown")
+        return self
+
+
+
