@@ -3,7 +3,6 @@ import pytest
 from pages.home.home_page import HomePage
 from pages.products.product_base_page import ProductBasePage
 from pages.products.product_details_page import ProductDetailsPage
-from pages.products.view_cart_page import ViewCartPage
 from tests.base_test import BaseTest
 from utils.log_util import Logger
 
@@ -60,7 +59,7 @@ class TestProducts(BaseTest):
 
         #Get Quantity from Table
         cart=ProductBasePage(page)
-        view_cart_quantity=cart.add_to_cart().view_cart().get_all_products_quantity()
+        view_cart_quantity=cart.click_add_to_cart().view_cart().get_all_products_quantity()
         log.logger.info(f"Quantity In Table: {quantity_detail}")
 
         #Verify Quantity

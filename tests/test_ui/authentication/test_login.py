@@ -1,28 +1,29 @@
 import logging
 from pages.home.home_page import HomePage
 from pages.signup.signup_base import SignupBase
-from tests.fixtures.ui_fixtures import signup
 from tests.base_test import BaseTest
+from utils.helpers.auth_helper import signup, delete_user
 from utils.log_util import Logger
 
 log=Logger(__name__,logging.INFO)
 
 class TestLogin(BaseTest):
-    def test_login_with_valid_credentials(self,page,signup):
+    def test_login_with_valid_credentials(self,page):
         """
         Test that user is allowed to log in with correct email and password
         """
         #Signup
-        username,email,password=signup
+        home=HomePage(page)
+        home.verify_home_page().go_to_signup_or_login().verify_signup_page()
+
+        username,email,password=signup(page)
         home=HomePage(page)
         home.logout_user()
-
         #Login
         home.go_to_signup_or_login().verify_login_page().login(email,password)
-
         #Verify Username
         home.verify_logged_in_username(username)
-
+        delete_user(page)
         log.logger.info(f"Logged In Successfully")
 
     def test_login_with_invalid_credentials(self,page):

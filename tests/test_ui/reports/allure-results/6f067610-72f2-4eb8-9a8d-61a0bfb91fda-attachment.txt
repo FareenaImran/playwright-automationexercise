@@ -1,0 +1,12 @@
+
+[INFO]: Selected navbar option : Home
+
+[INFO]: Clicking on Products
+
+[INFO]: On Page : All Products
+
+[INFO]: Entering Search Text : hello
+
+[INFO]: Clicking on Search Icon
+
+[INFO]: On Page : Searched Products

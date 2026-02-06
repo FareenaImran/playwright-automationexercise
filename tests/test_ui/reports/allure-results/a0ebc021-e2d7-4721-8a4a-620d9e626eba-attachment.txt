@@ -1,0 +1,28 @@
+
+[INFO]: Selected navbar option : Home
+
+[INFO]: Clicking on Products
+
+[INFO]: On Page : All Products
+
+[INFO]: Product List is visible
+
+[INFO]: Clicking on View Product
+
+[INFO]: Navigated to :https://automationexercise.com/product_details/1
+
+[INFO]: Product Info is visible
+
+[INFO]: Blue Top is visible
+
+[INFO]: Category: Women > Tops is visible
+
+[INFO]: Rs. 500 is visible
+
+[INFO]: Availability: In Stock is visible
+
+[INFO]: Condition: New is visible
+
+[INFO]: Brand: Polo is visible
+
+[INFO]: Verified !!Product Details are Visible

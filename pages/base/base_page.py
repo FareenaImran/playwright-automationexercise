@@ -35,7 +35,7 @@ class BasePage:
                 try:
                     element.wait_for(state="visible",timeout=2000)
                     element.scroll_into_view_if_needed()
-                    element.first.click()
+                    element.click(force=True)
                     log.logger.info("Clicking on " + field_name)
                     return  #exit function
                 except:
@@ -66,7 +66,7 @@ class BasePage:
             log.logger.info(f"Selecting {field_name} :{option}")
             return self
 
-    def get_text(self,locator,is_list=None):
+    def get_text(self,locator,is_list=False):
         return locator.all_inner_texts() if is_list else locator.inner_text()
 
     def upload_image(self,field_name,btn_name,file_name):

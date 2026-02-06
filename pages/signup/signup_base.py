@@ -17,7 +17,14 @@ class SignupBase(AEBasePage):
 
     def get_address_data(self):
         address_info = self.auth_data["Signup_Data"]["address_info"]
-        return address_info
+        first_name = address_info["first_name"]
+        last_name = address_info["last_name"]
+        address = address_info["address"]
+        state = address_info["state"]
+        city = address_info["city"]
+        zip_code = address_info["zip_code"]
+        number = address_info["mobile_num"]
+        return first_name,last_name,address,state,city,zip_code,number
 
     def get_login_cred(self):
         cred=self.auth_data["Login_Data"]

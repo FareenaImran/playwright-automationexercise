@@ -3,12 +3,13 @@ import re
 
 import pytest
 from pages.base.ae_base_page import AEBasePage
+from pages.products.product_base_page import ProductBasePage
 from pages.products.product_details_page import ProductDetailsPage
 from utils.log_util import Logger
 
 log=Logger(__name__,logging.INFO)
 
-class ProductsPage(AEBasePage):
+class ProductsPage(ProductBasePage):
     # ___________________________________Locators____________________________________________
     ALL_PRODUCTS_TEXT="All Products"
     PRODUCT="//*[contains(@class,'product-image-wrapper')]"
@@ -64,7 +65,7 @@ class ProductsPage(AEBasePage):
         price=self.get_product_price(index_no)
         return name,price
 
-    def goto_add_to_cart(self,index_no:int):
+    def add_to_cart(self,index_no:int):
         product=f"({self.PRODUCT})[{index_no}]"
         self.hover(product)
         self.click("Add To Cart", f"({product}{self.ADD_TO_CART_BTN})[{index_no}]")

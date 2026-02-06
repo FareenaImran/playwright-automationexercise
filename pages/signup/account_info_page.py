@@ -1,7 +1,5 @@
-from pages.base.ae_base_page import AEBasePage
 from pages.signup.account_created_page import AccountCreatedPage
 from pages.signup.signup_base import SignupBase
-from utils.read_json import load_json
 
 
 class AccountInfoPage(SignupBase):
@@ -65,14 +63,14 @@ class AccountInfoPage(SignupBase):
 
     def enter_required_address_info(self):
         # Get Address Info from 'auth_data.json'
-        address_info = self.get_address_data()
-        self.type("First Name",self.first_name_input,address_info["first_name"])
-        self.type("Last Name",self.last_name_input,address_info["last_name"])
-        self.type("Address",self.address_input,address_info["address"])
-        self.type("State",self.state_input,address_info["state"])
-        self.type("City",self.city_input,address_info["city"])
-        self.type("Zip Code",self.zip_code_input,address_info["zip_code"])
-        self.type("Mobile Num",self.mobile_num_input,address_info["mobile_num"],True)
+        first_name,last_name,address,state,city,zip_code,number = self.get_address_data()
+        self.type("First Name",self.first_name_input,first_name)
+        self.type("Last Name",self.last_name_input,last_name)
+        self.type("Address",self.address_input,address)
+        self.type("State",self.state_input,state)
+        self.type("City",self.city_input,city)
+        self.type("Zip Code",self.zip_code_input,zip_code)
+        self.type("Mobile Num",self.mobile_num_input,number,True)
         self.click("Create Account",self.CREATE_ACCOUNT_BTN)
         return AccountCreatedPage(self.page)
 

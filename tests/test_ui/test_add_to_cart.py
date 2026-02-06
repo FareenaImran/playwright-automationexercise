@@ -27,7 +27,7 @@ class TestAddToCart(BaseTest):
              products_detail.append(product_info)
 
         #Add to cart
-        product.goto_add_to_cart(1).continue_shopping().goto_add_to_cart(2).view_cart()
+        product.add_to_cart(1).continue_shopping().add_to_cart(2).view_cart()
 
         #Verify rows in table
         view_cart=ViewCartPage(page)
@@ -52,9 +52,9 @@ class TestAddToCart(BaseTest):
 
         #Add to cart
         home=HomePage(page)
-        (home.goto_products().goto_add_to_cart(1).continue_shopping().
-         goto_add_to_cart(2).continue_shopping().
-         goto_add_to_cart(2).view_cart())
+        (home.goto_products().add_to_cart(1).continue_shopping().
+         add_to_cart(2).continue_shopping().
+         add_to_cart(2).view_cart())
 
         #Get all Prices , Quantities and Totals from View Cart Table
         view_cart=ViewCartPage(page)

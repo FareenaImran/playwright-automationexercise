@@ -7,6 +7,7 @@ class FooterPage(AEBasePage):
     SUBS_EMAIL_INPUT="#susbscribe_email"
     SUBS_BTN="#subscribe"
 
+
     def __init__(self,page):
         super().__init__(page)
         self.subs_email_input=self.page.locator(self.SUBS_EMAIL_INPUT)

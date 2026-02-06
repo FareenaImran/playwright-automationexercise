@@ -4,24 +4,24 @@ from pages.home.home_page import HomePage
 from pages.signup.signup_base import SignupBase
 from pages.signup.signup_login_page import SignupLoginPage
 from tests.base_test import BaseTest
+from utils.helpers.auth_helper import signup, delete_user
 from utils.log_util import Logger
-from tests.fixtures.ui_fixtures import signup
 
 log=Logger(__name__,logging.INFO)
 class TestRegistration(BaseTest):
 
-    def test_signup(self,page,signup):
+    def test_signup(self,page):
         """
         Test User Registration and
         Delete Account Flow
         """
         #Signup
-        username,_,_=signup
-
+        username,_,_=signup(page)
         #Verify Logged in username
         home=HomePage(page)
         home.verify_logged_in_username(username)
-
+        #Delete account
+        delete_user(page)
         log.logger.info("Signup Successfully!")
 
     def test_register_user_with_existing_email(self, page):
