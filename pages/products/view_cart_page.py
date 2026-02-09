@@ -1,4 +1,5 @@
 import logging
+from asyncio import timeout_at
 
 from pages.base.order_details_base import OrderDetailsBase
 from pages.signup.signup_login_page import SignupLoginPage
@@ -9,14 +10,15 @@ log=Logger(__name__,logging.INFO)
 class ViewCartPage(OrderDetailsBase):
 
     # ___________________________________Locators____________________________________________
-    ROWS="//tbody//tr"
+    TABLE_ROW="//tbody//tr"
     PRODUCT_DATA="#product-"
     PROCEED_TO_CHECKOUT_BTN="Proceed To Checkout"
     REG_LOGIN_TEXT="Register / Login"
+    REMOVE_ICON="//*[@class='cart_quantity_delete']"
 
     def __init__(self, page):
         super().__init__(page)
-        self.rows=self.page.locator(self.ROWS)
+        self.row=self.page.locator(self.TABLE_ROW)
 
     # ___________________________________Methods____________________________________________
 
@@ -25,7 +27,7 @@ class ViewCartPage(OrderDetailsBase):
         return self
 
     def get_rows(self):
-        total=self.rows.count()
+        total=self.row.count()
         return total
 
     def proceed_to_checkout(self):
@@ -36,21 +38,11 @@ class ViewCartPage(OrderDetailsBase):
         self.click("Register / Login",self.REG_LOGIN_TEXT)
         return SignupLoginPage(self.page)
 
-    # def get_all_products_desc(self):
-    #     return self.get_text(self.prod_desc,True)
-    #
-    # def get_all_products_price(self):
-    #     prices_text= self.get_text(self.prod_price,True)
-    #     all_prices=[re.search(r'\d+',price).group() for price in prices_text]
-    #     return all_prices
-    #
-    # def get_all_products_quantity(self):
-    #     return self.get_text(self.prod_quan, True)
-    #
-    # def get_all_products_total(self):
-    #     total_texts=self.get_text(self.prod_total, True)
-    #     total_list=[re.search(r'\d+',total).group() for total in total_texts]
-    #     return total_list
+    def remove_product(self,index):
+        row_item=f"({self.REMOVE_ICON})[{index}]"
+        self.click("Remove Icon",row_item)
+        self.page.reload()
+        return self
 
 
 

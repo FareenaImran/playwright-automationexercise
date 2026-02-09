@@ -34,8 +34,8 @@ class ProductsPage(ProductBasePage):
 
     # ___________________________________Methods____________________________________________
 
-    def verify_product_page(self):
-        self.verify_page_heading(self.ALL_PRODUCTS_TEXT)
+    def verify_product_page(self,heading_name):
+        self.verify_page_heading(heading_name)
         return self
 
     def verify_product_list(self):
@@ -80,4 +80,5 @@ class ProductsPage(ProductBasePage):
         prices_text=self.get_text(product_price)
         price_count=re.search(r'\d+',prices_text).group()
         return price_count
+
 

@@ -57,7 +57,7 @@ class BasePage:
     def is_visible(self,field_name,locator):
         with allure.step(field_name + "is visible"):
             locator.scroll_into_view_if_needed()
-            expect(locator).to_be_visible()
+            locator.first.wait_for(state="visible")
             log.logger.info(field_name+" "+"is visible")
 
     def select_dropdown(self,field_name,locator,option):

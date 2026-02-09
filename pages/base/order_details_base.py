@@ -7,7 +7,7 @@ class OrderDetailsBase(AEBasePage):
 
     # __________________________________Locators____________________________________________
 
-    CART_DESC=".cart_description"
+    CART_DESC="//*[@class='cart_description']"
     CART_PRICE=".cart_price"
     CART_QUANTITY=".cart_quantity"
     CART_TOTAL=".cart_total"
@@ -37,3 +37,6 @@ class OrderDetailsBase(AEBasePage):
         total_texts = self.get_text(self.prod_total, True)
         total_list = [re.search(r'\d+', total).group() for total in total_texts]
         return total_list
+
+    def get_row_description(self,index):
+        return self.get_text(self.page.locator(f"({self.CART_DESC})[{index}]"))

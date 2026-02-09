@@ -1,0 +1,22 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m pages.base.base_page:base_page.py:61 Sub Categories is visible
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: DRESS
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m test_home_category:test_home_category.py:29 Category :WOMEN , Sub Category: DRESS contains in Page Heading :'Women - Dress Products'
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: TOPS
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m test_home_category:test_home_category.py:29 Category :WOMEN , Sub Category: TOPS contains in Page Heading :'Women - Tops Products'
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: SAREE
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m pages.base.base_page:base_page.py:61 Sub Categories is visible
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: TSHIRTS
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m test_home_category:test_home_category.py:29 Category :MEN , Sub Category: TSHIRTS contains in Page Heading :'Men - Tshirts Products'
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: JEANS
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m pages.base.base_page:base_page.py:61 Sub Categories is visible
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: DRESS
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Category
+[32mINFO    [0m test_home_category:test_home_category.py:29 Category :KIDS , Sub Category: DRESS contains in Page Heading :'Kids - Dress Products'
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Sub Category: TOPS & SHIRTS
+[32mINFO    [0m test_home_category:test_home_category.py:30 Verified! All Category Navigates to Correct Page

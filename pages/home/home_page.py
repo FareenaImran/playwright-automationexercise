@@ -24,6 +24,8 @@ class HomePage(AEBasePage):
     PRODUCTS="Products"
     SUBSCRIPTION_TEXT="Subscription"
     CART_TEXT="Cart"
+    CATEGORY="//*[contains(@class,'category-products')]//h4/a"
+    SUB_CATEGORY="//*[@class='panel-collapse in']//a"
 
 
     def __init__(self,page):
@@ -31,7 +33,7 @@ class HomePage(AEBasePage):
         self.test_cases=self.page.get_by_role("link",name=self.TESTCASES)
         self.logged_in_username_text=self.page.get_by_text(self.LOGGED_IN_USERNAME_TEXT)
         self.subscription_text=self.page.get_by_text(self.SUBSCRIPTION_TEXT)
-
+        self.sub_categories=self.page.locator(self.SUB_CATEGORY)
 
     # ___________________________________Methods____________________________________________
     def goto_cart(self):
@@ -79,6 +81,34 @@ class HomePage(AEBasePage):
             return self
         except Exception as e:
             raise Exception(f"Failed to login/sign {str(e)}")
+
+    def click_on_category(self,category_num):
+        category_ele=f"({self.CATEGORY})[{category_num}]"
+        self.click(f"Category",category_ele)
+        return self
+
+    def get_category_text(self,category_num):
+        category_ele=f"({self.CATEGORY})[{category_num}]"
+        category_text = self.get_text(self.page.locator(category_ele))
+        return self,category_text
+
+    def get_sub_categories_count(self):
+        """Get Sub Category Count"""
+        self.is_visible("Sub Categories",self.sub_categories.first)
+        count=self.sub_categories.count()
+        return self,count
+
+    def select_sub_category(self,sub_category_num):
+        sub_category_ele=f"({self.SUB_CATEGORY})[{sub_category_num}]"
+        sub_category_text=self.get_text(self.page.locator(sub_category_ele))
+        self.click(f"Sub Category: {sub_category_text}",sub_category_ele)
+        return ProductsPage(self.page),sub_category_text
+
+
+
+
+
+
 
 
 

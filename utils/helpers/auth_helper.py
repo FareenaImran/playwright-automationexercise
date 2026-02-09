@@ -20,5 +20,5 @@ def signup(page):
 
 def delete_user(page):
     home = HomePage(page)
-    home.goto_delete_account().delete_account()
+    home.goto_delete_account().verify_delete_account()
     log.logger.info("Account Deleted Successfully!")

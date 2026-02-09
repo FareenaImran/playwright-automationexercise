@@ -12,12 +12,14 @@ class AEBasePage(BasePage):
     CLOSE_ICON = ".close"
     MODAL =".modal-content"
     SUCCESS_MSG=".alert-success"
+    PAGE_HEADING="//h2[contains(@class,'title')]"
 
 
     def __init__(self,page):
         super().__init__(page)
         self.modal=self.page.locator(self.MODAL)
         self.success_msg=self.page.locator(self.SUCCESS_MSG)
+        self.heading=self.page.locator(self.PAGE_HEADING)
 
     # ___________________________________Methods____________________________________________
 
@@ -38,7 +40,11 @@ class AEBasePage(BasePage):
             heading.wait_for(state="visible")
             assert heading.is_visible(),f"Unable to navigate to {value}"
             log.logger.info(f"On Page : {value}")
-            return heading.inner_text()
+            return self
+
+    def get_page_heading(self):
+        return self.get_text(self.heading)
+
 
     def close_modal_if_present(self):
         """Close modal if present"""

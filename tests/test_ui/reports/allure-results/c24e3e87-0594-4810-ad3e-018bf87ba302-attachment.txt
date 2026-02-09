@@ -1,8 +1,0 @@
-INFO     pages.base.ae_base_page:ae_base_page.py:30 Selected navbar option : Home
-INFO     pages.base.base_page:base_page.py:39 Clicking on Products
-INFO     pages.base.base_page:base_page.py:39 Clicking on View Product
-INFO     test_products:test_products.py:58 Added Quantity: 4
-INFO     pages.base.base_page:base_page.py:39 Clicking on Add to cart
-INFO     pages.base.base_page:base_page.py:39 Clicking on View Cart
-INFO     test_products:test_products.py:63 Quantity In Table: 4
-INFO     test_products:test_products.py:69 Verified!! View Cart quantity shows correct data

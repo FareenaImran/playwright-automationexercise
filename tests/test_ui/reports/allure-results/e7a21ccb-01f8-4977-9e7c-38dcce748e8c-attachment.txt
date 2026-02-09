@@ -1,6 +1,0 @@
-INFO     pages.base.ae_base_page:ae_base_page.py:30 Selected navbar option : Home
-INFO     pages.base.base_page:base_page.py:39 Clicking on Products
-INFO     pages.base.ae_base_page:ae_base_page.py:40 On Page : All Products
-INFO     pages.base.base_page:base_page.py:53 Entering Search Text : hello
-INFO     pages.base.base_page:base_page.py:39 Clicking on Search Icon
-INFO     pages.base.ae_base_page:ae_base_page.py:40 On Page : Searched Products

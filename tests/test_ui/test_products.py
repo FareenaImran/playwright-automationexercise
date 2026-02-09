@@ -17,7 +17,7 @@ class TestProducts(BaseTest):
         home=HomePage(page)
         (home.verify_home_page().
          goto_products().
-         verify_product_page().
+         verify_product_page("All Products").
          verify_product_list().
          view_product(1).
          verify_product_details_url().
@@ -35,7 +35,7 @@ class TestProducts(BaseTest):
 
         #Search Product
         home=HomePage(page)
-        searched_product_names=(home.verify_home_page().goto_products().verify_product_page().
+        searched_product_names=(home.verify_home_page().goto_products().verify_product_page("All Products").
                                  search_product(search_term).verify_searched_product_text().get_all_product_names())
 
         #Verify searched term in product names
