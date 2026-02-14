@@ -1,0 +1,6 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Add To Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Continue Shopping
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Add To Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on View Cart
+[32mINFO    [0m test_add_to_cart:test_add_to_cart.py:48 Verified!! Product details are Correct in table

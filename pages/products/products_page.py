@@ -19,7 +19,7 @@ class ProductsPage(ProductBasePage):
     SEARCH_PRODUCT_TEXT="Searched Products"
     PRODUCT_NAME=".overlay-content p"
     PRODUCT_PRICE=".product-overlay h2"
-    ADD_TO_CART_BTN="//a[text()='Add to cart']"
+    ADD_TO_CART_BTN="//*[contains(@class,'product-overlay')]//a[text()='Add to cart']"
 
 
 
@@ -68,7 +68,8 @@ class ProductsPage(ProductBasePage):
     def add_to_cart(self,index_no:int):
         product=f"({self.PRODUCT})[{index_no}]"
         self.hover(product)
-        self.click("Add To Cart", f"({product}{self.ADD_TO_CART_BTN})[{index_no}]")
+        add_to_cart_btn=f"({self.ADD_TO_CART_BTN})[{index_no}]"
+        self.click("Add To Cart", add_to_cart_btn)
         return self
     
     def get_product_name(self,index_no):

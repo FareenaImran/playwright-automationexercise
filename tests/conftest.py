@@ -1,24 +1,25 @@
 import os
 from pathlib import Path
-
 import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
-
 from utils.save_navigation import block_ad
-
 load_dotenv()
 
 file_path=Path(__file__).resolve().parent
 from utils.config_reader import read_config
 
 
-#------------------------------------API's Fixtures----------------------------------------
 
+#------------------------------------API's Fixtures----------------------------------------
 @pytest.fixture(scope="session")
-def api_request_context():
+def playwright_instance():
     with sync_playwright() as p:
-        request_context=p.request.new_context(timeout=60000)
+        yield p
+
+@pytest.fixture(scope="function")
+def api_request_context(playwright_instance):
+        request_context=playwright_instance.request.new_context(timeout=60000)
         yield request_context
         request_context.dispose()
 
@@ -32,17 +33,16 @@ def setup_module(page):
 
 
 @pytest.fixture(params=["chrome"],scope="function")
-def browser(request):
+def browser(request,playwright_instance):
     browser_type=request.param
-    with sync_playwright() as p:
-        if browser_type=="chrome":
-            browser=p.chromium.launch(headless=False,args=["--start-maximized"])
-        elif browser_type=="firefox":
-            browser=p.firefox.launch(headless=False,args=["--start-maximized"])
-        else:
-            raise ValueError(f"Unsupported Browser : {browser_type}")
-        yield browser
-        browser.close()
+    if browser_type=="chrome":
+        browser=playwright_instance.chromium.launch(headless=False,args=["--start-maximized"])
+    elif browser_type=="firefox":
+        browser=playwright_instance.firefox.launch(headless=False,args=["--start-maximized"])
+    else:
+        raise ValueError(f"Unsupported Browser : {browser_type}")
+    yield browser
+    browser.close()
 
 @pytest.fixture(scope="function")
 def page(browser):

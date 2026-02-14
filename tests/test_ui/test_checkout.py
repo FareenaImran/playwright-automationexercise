@@ -53,6 +53,7 @@ class TestCheckout(BaseTest):
         assert all(any(product in desc for desc in descriptions) for product in add_to_cart), \
             f"{add_to_cart} does not match with {descriptions}"
 
+
         # Verify address details
         checkout = CheckoutPage(page)
         (checkout.

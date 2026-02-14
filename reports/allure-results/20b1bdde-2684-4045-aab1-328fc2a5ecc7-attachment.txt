@@ -1,0 +1,7 @@
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:32 Selected navbar option : Home
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:42 On Page : All Products
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Search Text : blue
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Search Icon
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:42 On Page : Searched Products
+[32mINFO    [0m test_search_product:test_search_product.py:46 Total Searched Products:7
