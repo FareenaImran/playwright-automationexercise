@@ -52,10 +52,10 @@ class AEBasePage(BasePage):
             self.click("Close",self.CLOSE_ICON)
 
     def get_alert_msg(self):
-        alert = self.get_text(self.success_msg)
+        alert = self.get_text(self.success_msg.first)
         return alert
 
-    def get_validation_msg(self,field_name,locator):
+    def get_validation_msg(self,locator):
         msg=locator.evaluate("element => element.validationMessage")
         return msg
 

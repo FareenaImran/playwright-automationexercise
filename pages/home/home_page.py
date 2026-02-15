@@ -2,6 +2,8 @@ import logging
 from pages.base.ae_base_page import AEBasePage
 from pages.contact_us.contact_us import ContactUsPage
 from pages.home.footer_page import FooterPage
+from pages.home.recommended_section_page import RecommendedSectionPage
+from pages.products.product_base_page import ProductBasePage
 from pages.products.products_page import ProductsPage
 from pages.products.view_cart_page import ViewCartPage
 from pages.signup.delete_account_page import DeleteAccountPage
@@ -26,6 +28,8 @@ class HomePage(AEBasePage):
     CART_TEXT="Cart"
     CATEGORY="//*[contains(@class,'category-products')]//h4/a"
     SUB_CATEGORY="//*[@class='panel-collapse in']//a"
+    RECOMMENDED_PROD="//*[contains(@id,'recommended')]"
+
 
 
     def __init__(self,page):
@@ -34,6 +38,8 @@ class HomePage(AEBasePage):
         self.logged_in_username_text=self.page.get_by_text(self.LOGGED_IN_USERNAME_TEXT)
         self.subscription_text=self.page.get_by_text(self.SUBSCRIPTION_TEXT)
         self.sub_categories=self.page.locator(self.SUB_CATEGORY)
+        self.recommended_text=self.page.locator(self.RECOMMENDED_PROD)
+
 
     # ___________________________________Methods____________________________________________
     def goto_cart(self):
@@ -103,6 +109,12 @@ class HomePage(AEBasePage):
         sub_category_text=self.get_text(self.page.locator(sub_category_ele))
         self.click(f"Sub Category: {sub_category_text}",sub_category_ele)
         return ProductsPage(self.page),sub_category_text
+
+    def goto_recommended_products(self):
+        self.recommended_text.scroll_into_view_if_needed()
+        return RecommendedSectionPage(self.page)
+
+
 
 
 

@@ -1,0 +1,10 @@
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:32 Selected navbar option : Home
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Add To Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on View Cart
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:32 Selected navbar option : Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Proceed To Checkout
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Register / Login
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Name : Fareena
+[32mINFO    [0m pages.base.base_page:base_page.py:51 Entering Email : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Signup

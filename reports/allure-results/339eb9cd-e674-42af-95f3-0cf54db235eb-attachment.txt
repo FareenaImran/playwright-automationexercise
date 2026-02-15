@@ -1,0 +1,28 @@
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:32 Selected navbar option : Home
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Add To Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on View Cart
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:32 Selected navbar option : Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Proceed To Checkout
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Register / Login
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Name : Fareena
+[32mINFO    [0m pages.base.base_page:base_page.py:51 Entering Email : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Signup
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:42 On Page : Enter Account Information
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Mrs
+[32mINFO    [0m pages.base.base_page:base_page.py:51 Entering Password : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:64 Selecting Day :25
+[32mINFO    [0m pages.base.base_page:base_page.py:64 Selecting Month :December
+[32mINFO    [0m pages.base.base_page:base_page.py:64 Selecting Year :2007
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering First Name : Fareena
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Last Name : Imran
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Address : ABC Street
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering State : Sindh
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering City : Karachi
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Zip Code : 8920
+[32mINFO    [0m pages.base.base_page:base_page.py:51 Entering Mobile Num : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Create Account
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:42 On Page : Account Created!
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Continue
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Proceed To Checkout

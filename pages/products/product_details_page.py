@@ -1,5 +1,6 @@
 import logging
 from pages.products.product_base_page import ProductBasePage
+from pages.signup.signup_base import SignupBase
 from utils.log_util import Logger
 
 log=Logger(__name__,logging.INFO)
@@ -17,6 +18,11 @@ class ProductDetailsPage(ProductBasePage):
     QUANTITY="#quantity"
     CONT_SHOP_BTN = "Continue Shopping"
     VIEW_CART="View Cart"
+    REVIEW_TEXT="//*[contains(text(),'Write Your Review')]"
+    NAME_INPUT="#name"
+    EMAIL_INPUT="#email"
+    REVIEW_MSG="#review"
+    SUBMIT_BTN="Submit"
 
 
     def __init__(self,page):
@@ -29,6 +35,10 @@ class ProductDetailsPage(ProductBasePage):
         self.product_condition=self.page.locator(self.PRODUCT_CONDITION)
         self.product_brand=self.page.locator(self.PRODUCT_BRAND)
         self.product_quantity=self.page.locator(self.QUANTITY)
+        self.review_text=self.page.locator(self.REVIEW_TEXT)
+        self.name_input=self.page.locator(self.NAME_INPUT)
+        self.email_input=self.page.locator(self.EMAIL_INPUT)
+        self.review_msg=self.page.locator(self.REVIEW_MSG)
 
     # ___________________________________Methods____________________________________________
 
@@ -87,6 +97,21 @@ class ProductDetailsPage(ProductBasePage):
             if "add" in action.lower().strip() \
             else self.product_quantity.press("ArrowDown")
         return self
+
+    def add_review(self,msg):
+        data=SignupBase(self.page)
+        username,email,_=data.get_login_cred()
+        self.is_visible(self.REVIEW_TEXT,self.review_text)
+        self.type("Name",self.name_input,username)
+        self.type("Email",self.email_input,email,True)
+        self.type("Review",self.review_msg,msg)
+        self.click("SUBMIT",self.SUBMIT_BTN)
+        return self
+
+
+
+
+
 
 
 

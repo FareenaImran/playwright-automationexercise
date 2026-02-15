@@ -1,0 +1,8 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:42 On Page : All Products
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on View Product
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Name : Farihna
+[32mINFO    [0m pages.base.base_page:base_page.py:51 Entering Email : *****************
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Review : Great Quality!
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on SUBMIT
+[32mINFO    [0m test_product_review:test_product_review.py:19 Thank you for your review.

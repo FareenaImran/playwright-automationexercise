@@ -1,0 +1,6 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Products
+[32mINFO    [0m pages.base.ae_base_page:ae_base_page.py:42 On Page : All Products
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on View Product
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Name : Farihna
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Email : fyctest5401+test@gmail.com
+[32mINFO    [0m pages.base.base_page:base_page.py:53 Entering Review : Great Quality!

@@ -21,7 +21,7 @@ class FooterPage(AEBasePage):
         return self
 
     def verify_subscription(self):
-        msg=self.get_validation_msg("Email",self.subs_email_input)
+        msg=self.get_validation_msg(self.subs_email_input)
         return msg if msg else self.get_alert_msg()
 
 

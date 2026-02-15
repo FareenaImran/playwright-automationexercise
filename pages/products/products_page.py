@@ -1,8 +1,6 @@
 import logging
 import re
-
 import pytest
-from pages.base.ae_base_page import AEBasePage
 from pages.products.product_base_page import ProductBasePage
 from pages.products.product_details_page import ProductDetailsPage
 from utils.log_util import Logger
@@ -17,7 +15,7 @@ class ProductsPage(ProductBasePage):
     SEARCH_INPUT="#search_product"
     SEARCH_BTN="#submit_search"
     SEARCH_PRODUCT_TEXT="Searched Products"
-    PRODUCT_NAME=".overlay-content p"
+    PRODUCT_NAME="//*[contains(@class,'overlay-content')]//p"
     PRODUCT_PRICE=".product-overlay h2"
     ADD_TO_CART_BTN="//*[contains(@class,'product-overlay')]//a[text()='Add to cart']"
 
@@ -28,7 +26,6 @@ class ProductsPage(ProductBasePage):
         self.product=self.page.locator(self.PRODUCT)
         self.search_input=self.page.locator(self.SEARCH_INPUT)
         self.product=self.page.locator(self.PRODUCT)
-        self.product_name=self.page.locator(self.PRODUCT_NAME)
         self.product_price = self.page.locator(self.PRODUCT_PRICE)
 
 
@@ -73,8 +70,8 @@ class ProductsPage(ProductBasePage):
         return self
     
     def get_product_name(self,index_no):
-        product_name=self.product_name.nth(index_no)
-        return self.get_text(product_name)
+        product_name=f"({self.PRODUCT_NAME})[{index_no}]"
+        return self.get_text(self.page.locator(product_name))
 
     def get_product_price(self,index_no):
         product_price=self.product_price.nth(index_no)

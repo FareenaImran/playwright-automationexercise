@@ -1,0 +1,3 @@
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on Add to cart
+[32mINFO    [0m pages.base.base_page:base_page.py:39 Clicking on View Cart
+[32mINFO    [0m test_recommended_section:test_recommended_section.py:20 Verified ! Recommended Product 'Blue Top'added in cart
